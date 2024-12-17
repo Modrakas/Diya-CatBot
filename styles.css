@@ -30,7 +30,7 @@ body {
 	width: 420px;
 	background: var(--white-color);
 	overflow: hidden;
-	border-radius: 15px;
+	border-radius: 10px;
 	box-shadow: 0 0 128px 0 hsla(48, 98%, 47%, 0.1), 0 32px 64px -48px hsla(0, 0%, 0%, 0.5);
 }
 
@@ -124,7 +124,7 @@ body {
 
 .message-body .message .message-text {
 	background: var(--light-color);
-	border-radius: 13px 13px 13px 3px;
+	border-radius: 10px 10px 10px 3px;
 }
 
 .message-body .user-message {
@@ -135,7 +135,7 @@ body {
 .message-body .user-message .message-text {
 	color: var(--white-color);
 	background: var(--dark-color);
-	border-radius: 13px 13px 3px 13px;
+	border-radius: 10px 10px 3px 10px;
 }
 
 .message-body .catbot-message.thinking .message-text {
@@ -190,7 +190,7 @@ body {
 .input .input-form {
 	display: flex;
 	align-items: center;
-	border-radius: 32px;
+	border-radius: 30px;
 	outline: 1px solid var(--outline-color);
 }
 
@@ -245,4 +245,54 @@ body {
 
 .input-form .btn-controls button:hover {
 	background: var(--light-color);
+}
+
+/* Small mobile CSS */
+@media (max-width: 480px) {
+	.catbot-container {
+		width: 100%;
+		max-width: 280px;
+		margin-bottom: 100px;
+	}
+
+	.header .logo-text {
+		font-size: 1rem;
+	}
+
+	.message-body {
+		padding: 15px 14px;
+		height: 300px;
+	}
+
+	.message-body .message .message-text {
+		font-size: 0.8rem;
+		max-width: 80%;
+	}
+
+	.input .input-form {
+		display: flex;
+		align-items: center;
+		padding-top: 10px;
+		height: 40px;
+		border-radius: 30px;
+		outline: 1px solid var(--outline-color);
+	}
+
+	.input-form .message-input {
+		font-size: 0.8rem;
+		padding: 10px 0 10px 14px;
+	}
+
+	.input-form .btn-controls button {
+		height: 28px;
+		width: 28px;
+		padding-top: 7px;
+		font-size: 0.9rem;
+	}
+
+	.input-form .btn-controls #send-message {
+		height: 30px;
+		width: 30px;
+		font-size: 1rem;
+	}
 }
