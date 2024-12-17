@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/887839b609.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="styles.css">
+	<title>Diya - CatBot</title>
+</head>
+<body>
+	<div class="catbot-container">
+		<!-- CatBot Header -->
+		<div class="header">
+			<div class="header-logo">
+				<i class="fa-solid fa-cat"></i>
+				<h2 class="logo-text">Diya CatBot</h2>
+			</div>
+				<button class="close-catbot"><i class="fa-solid fa-chevron-down"></i></button>
+		</div>
+	
+		<!-- CatBot Message Container -->
+		<div class="message-body">
+			<div class="message catbot-message">
+				<i class="fa-solid fa-cat catbot-avatar"></i>
+				<div class="message-text">
+					Hello! <br> How can I help you?
+				</div>
+			</div>
+		</div>
+	
+		<!-- CatBot Input -->
+		<div class="input">
+			<form action="#" class="input-form" id="form">
+				<textarea placeholder="Message..." class="message-input" id="msg-input" required></textarea>
+				<div class="btn-controls">
+					<button type="button"><i class="fa-regular fa-face-smile"></i></button>
+					<button type="button"><i class="fa-solid fa-plus"></i></button>
+					<button type="submit" class="send" id="send-message"><i class="fa-solid fa-arrow-up"></i></button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
