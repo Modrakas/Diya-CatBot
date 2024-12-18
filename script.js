@@ -6,6 +6,8 @@ const sendMessageButton = document.querySelector('#send-message');
 const API_KEY = 'AIzaSyAkD3-q8Jwc9D3KiblnRaT8OAgMXFUCuAI';
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
 
+
+
 const userData = {
 	message: null
 }
@@ -21,6 +23,16 @@ const createMessageElement = (content, ...classes) => {
 //Generate catbot response using API
 const generateCatbotResponse = async (incomingMessageDiv) => {
 	const messageElement = incomingMessageDiv.querySelector('.message-text');
+	const catbotName = 'Diya';
+
+		// Check if the user asks for the catbot's name
+		if (userData.message.toLowerCase().includes('your name')) {
+			messageElement.innerText = `I'm a helpful assistant named '${catbotName}'.`;
+			incomingMessageDiv.classList.remove('thinking');
+			messageBody.scrollTo({ top: messageBody.scrollHeight, behavior: 'smooth' });
+			return;
+		}
+
 	//API request
 	const requestOptions = {
 		method: 'POST',
@@ -41,10 +53,11 @@ const generateCatbotResponse = async (incomingMessageDiv) => {
 	const apiResponseText = data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1').trim();
 		messageElement.innerText = apiResponseText;
 	} catch (error){
-		console.log(error); 
+		console.log(error);
+		messageElement.innerText = 'Sorry, something went wrong. Please try again.'
 	} finally {
 		incomingMessageDiv.classList.remove('thinking');
-		messageBody.scrollTo({ top: messageBody.scrollHeight, behavio: 'smooth' }); 
+		messageBody.scrollTo({ top: messageBody.scrollHeight, behavior: 'smooth' }); 
 	}
 };
 
@@ -76,7 +89,7 @@ const outgoingMessage = (event) => {
 	
 		const incomingMessageDiv = createMessageElement(messageContent, 'catbot-message', 'thinking');
 		messageBody.appendChild(incomingMessageDiv);
-		messageBody.scrollTo({ top: messageBody.scrollHeight, behavio: 'smooth' }); 
+		messageBody.scrollTo({ top: messageBody.scrollHeight, behavior: 'smooth' }); 
 		generateCatbotResponse(incomingMessageDiv);
 	}, 600);
 }

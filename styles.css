@@ -22,12 +22,13 @@ body {
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
-	background: linear-gradient(var(--light-color), var(--grey-color)) ;
+	background: linear-gradient(var(--light-color), var(--grey-color));
 }
 
 .catbot-container {
 	position: relative;
-	width: 420px;
+	width: 375px;
+	height: 650px;
 	background: var(--white-color);
 	overflow: hidden;
 	border-radius: 10px;
