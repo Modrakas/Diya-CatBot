@@ -58,9 +58,12 @@ const generateCatbotResponse = async (incomingMessageDiv) => {
 	const apiResponseText = data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1').trim();
 		messageElement.innerText = apiResponseText;
 	} catch (error){
+		//Generate API error response
 		console.log(error);
 		messageElement.innerText = 'Sorry, something went wrong. Please try again.'
 	} finally {
+		//Reset user data, remove thinking indicator, and auto scroll to bottom
+		userData.file = {};
 		incomingMessageDiv.classList.remove('thinking');
 		messageBody.scrollTo({ top: messageBody.scrollHeight, behavior: 'smooth' }); 
 	}
