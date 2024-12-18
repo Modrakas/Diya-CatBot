@@ -2,6 +2,8 @@ const messageBody = document.querySelector('.message-body');
 const messageInput = document.querySelector('.message-input');
 const sendMessageButton = document.querySelector('#send-message');
 const fileUpload = document.querySelector('#file-upload');
+const fileUploadContainer = document.querySelector('.file-upload-container');
+const fileCancelButton = document.querySelector('#file-cancel-btn');
 
 //API setup
 const API_KEY = 'AIzaSyAkD3-q8Jwc9D3KiblnRaT8OAgMXFUCuAI';
@@ -74,6 +76,7 @@ const outgoingMessage = (event) => {
 	event.preventDefault();
 	userData.message = messageInput.value.trim();
 	messageInput.value = '';
+	fileUploadContainer.classList.remove('file-uploaded');
 
 	// create and display user message
 	const messageContent = `<div class="message-text"></div> ${userData.file.data ? `<img src='data:${userData.file.mime_type};base64,${userData.file.data}' class='attachment'/>` : ''}`;
@@ -118,6 +121,9 @@ fileUpload.addEventListener('change', () => {
 	//Convert file to base64 format so HTTP requests can read the plain text of file
 	const reader = new FileReader();
 	reader.onload = (event) => {
+		//preview selected img file
+		fileUploadContainer.querySelector('img').src = event.target.result;
+		fileUploadContainer.classList.add('file-uploaded');
 		const base64String = event.target.result.split(',')[1];
 
 		//Stores file data in userData
@@ -131,6 +137,12 @@ fileUpload.addEventListener('change', () => {
 	}
 	reader.readAsDataURL(file);
 });
+
+//Cancel image file upload
+fileCancelButton.addEventListener('click', () => {
+	userData.file = {};
+	fileUploadContainer.classList.remove('file-uploaded');
+})
 
 //BUTTONS SENDING DATA TO CATBOT
 sendMessageButton.addEventListener('click', (event) => outgoingMessage(event));

@@ -256,8 +256,40 @@ body {
 	background: var(--light-color);
 }
 
+.input-form .file-upload-container {
+	height: 35px;
+	width: 35px;
+	position: relative;
+} 
+
+.input-form .file-upload-container :where(img, button) {
+	position: absolute;
+}
+
+.input-form .file-upload-container img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.input-form .file-upload-container #file-cancel-btn {
+	color: var(--dark-color);
+	background: var(--light-color);
+}
+
+.input-form .file-upload-container :where(img, #file-cancel-btn),
+.input-form .file-upload-container.file-uploaded #file-upload-btn {
+	display: none;
+}
+
+.input-form .file-upload-container.file-uploaded img,
+.input-form .file-upload-container.file-uploaded:hover #file-cancel-btn {
+	display: block;
+}
+
 /* Small mobile CSS */
-@media (max-width: 480px) {
+@media (max-width: 480px) { 
 	.catbot-container {
 		width: 100%;
 		max-width: 280px;
