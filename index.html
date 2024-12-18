@@ -34,7 +34,10 @@
 				<textarea placeholder="Message..." class="message-input" id="msg-input" required></textarea>
 				<div class="btn-controls">
 					<button type="button"><i class="fa-regular fa-face-smile"></i></button>
-					<button type="button"><i class="fa-solid fa-plus"></i></button>
+					<div class="file-upload-container">
+						<input type="file" accept="images/" id="file-upload" hidden>
+						<button type="button" id="file-upload-btn"><i class="fa-solid fa-plus"></i></button>
+					</div>
 					<button type="submit" class="send" id="send-message"><i class="fa-solid fa-arrow-up"></i></button>
 				</div>
 			</form>
