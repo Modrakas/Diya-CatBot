@@ -94,6 +94,8 @@ body {
 	height: 460px;
 	margin-bottom: 82px;
 	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--light-color) transparent;
 }
 
 .message-body .message {
