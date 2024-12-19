@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-	--dark-color: #3d52a0;
-	--medium-color: hsl(149, 100%, 89%);
-	--light-color: #ede8f5;
-	--grey-color: #adbbda;
-	--white-color: #ffffff;
-	--hover-color: #8697c4;
-	--outline-color: #7091e6;
+	/* --dark-color: #3d52a0; */
+	/* --medium-color: hsl(149, 100%, 89%); */
+	/* --light-color: #ede8f5; */
+	/* --grey-color: #adbbda; */
+	/* --white-color: #ffffff; */
+	/* --hover-color: #8697c4; */
+	/* --outline-color: #7091e6; */
+
+	--dark-color: #E85A4A;
+	--hover-color: #E98074;
+	--light-color: #D8C3A5;
+	--white-color: #EBE9E1;
+	--grey-color: #8E8D8A;
+	--outline-color: #E43D12;
 }
 
 * {
@@ -19,7 +26,7 @@
 
 body {
 	min-height: 100vh;
-	background: linear-gradient(var(--light-color), var(--grey-color));
+	background: linear-gradient(var(--white-color), var(--light-color));
 }
 
 #catbot-toggler {
@@ -268,11 +275,12 @@ body.show-catbot .catbot-container {
 	position: relative;
 	align-items: center;
 	border-radius: 30px;
+	background: var(--white-color);
 	outline: 1px solid var(--outline-color);
 }
 
 .input .input-form:focus-within {
-	outline: 2px solid var(--dark-color);
+	outline: 3px solid var(--dark-color);
 }
 
 .input-form .message-input {
@@ -286,6 +294,7 @@ body.show-catbot .catbot-container {
 	font-size: 0.95rem;
 	padding: 14px 0 13px 18px;
 	border-radius: inherit;
+	background: var(--white-color);
 	scrollbar-width: thin;
 	scrollbar-color: transparent transparent;
 }
