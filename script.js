@@ -21,6 +21,7 @@ const userData = {
 	}
 }
 
+const chatHistory = [];
 const initialInputHeight = messageInput.scrollHeight;
 
 //create div and class
@@ -35,6 +36,12 @@ const createMessageElement = (content, ...classes) => {
 const generateCatbotResponse = async (incomingMessageDiv) => {
 	const messageElement = incomingMessageDiv.querySelector('.message-text');
 	const catbotName = 'Diya';
+	
+	//Adds usermessage to chat history
+	chatHistory.push({
+		role: 'user',
+		parts: [{ text: userData.message }, ...(userData.file.data ? [{ inline_data: userData.file }] : [])]
+	});
 
 		// Check if the user asks for the catbot's name
 		if (userData.message.toLowerCase().includes('your name')) {
@@ -49,9 +56,7 @@ const generateCatbotResponse = async (incomingMessageDiv) => {
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
 		body: JSON.stringify({
-			contents: [{
-				parts: [{ text: userData.message }, ...(userData.file.data ? [{ inline_data: userData.file }] : [])]
-			}]
+			contents: chatHistory
 		})
 	}
 	try {
@@ -63,6 +68,12 @@ const generateCatbotResponse = async (incomingMessageDiv) => {
 		//retrieve and display catbot response text
 	const apiResponseText = data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, '$1').trim();
 		messageElement.innerText = apiResponseText;
+
+		//Adds catbot response to chat history
+		chatHistory.push({
+			role: 'model',
+			parts: [{ text: apiResponseText }]
+		});
 	} catch (error){
 		//Generate API error response
 		console.log(error);
@@ -113,7 +124,7 @@ const outgoingMessage = (event) => {
 //send message when 'enter' key is used
 messageInput.addEventListener('keydown', (event) => {
 	const userMessage = event.target.value.trim();
-	if(event.key === 'Enter' && userMessage && !event.shiftKey && window.innerWidth > 768) {
+	if(event.key === 'Enter' && userMessage && !event.shiftKey) {
 		outgoingMessage(event);
 	}
 });
