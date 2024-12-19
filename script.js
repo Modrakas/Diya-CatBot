@@ -5,6 +5,7 @@ const fileUpload = document.querySelector('#file-upload');
 const fileUploadContainer = document.querySelector('.file-upload-container');
 const fileCancelButton = document.querySelector('#file-cancel-btn');
 const catbotToggler = document.querySelector('#catbot-toggler');
+const closeCatbot = document.querySelector('.close-catbot');
 
 //API setup
 const API_KEY = 'AIzaSyAkD3-q8Jwc9D3KiblnRaT8OAgMXFUCuAI';
@@ -171,3 +172,4 @@ sendMessageButton.addEventListener('click', (event) => outgoingMessage(event));
 //Trigger file upload when the upload button is clicked
 document.querySelector('#file-upload-btn').addEventListener('click', () => fileUpload.click());
 catbotToggler.addEventListener('click', () => document.body.classList.toggle('show-catbot'));
+closeCatbot.addEventListener('click', () => document.body.classList.remove('show-catbot'));

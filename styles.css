@@ -35,6 +35,11 @@ body {
 	cursor: pointer;
 	border-radius: 50%;
 	background: var(--dark-color);
+	transition: all 0.2s ease;
+}
+
+body.show-catbot #catbot-toggler {
+	transform: rotate(90deg);
 }
 
 #catbot-toggler span {
@@ -45,6 +50,14 @@ body {
 
 #catbot-toggler span:last-child {
 	opacity: 0;
+}
+
+body.show-catbot #catbot-toggler span:first-child {
+	opacity: 0;
+}
+
+body.show-catbot #catbot-toggler span:last-child {
+	opacity: 1;
 }
 
 .catbot-container {
@@ -60,11 +73,14 @@ body {
 	pointer-events: none;
 	box-shadow: 0 0 120px 0 hsla(48, 98%, 47%, 0.15), 0 30px 60px -50px hsla(0, 0%, 0%, 0.5);
 	transition: all 0.2s ease;
+	transform: scale(0.2);
+	transform-origin: bottom right;
 }
 
 body.show-catbot .catbot-container {
 	opacity: 1;
 	pointer-events: auto;
+	transform: scale(1);
 }
 
 .header {
