@@ -21,6 +21,8 @@ const userData = {
 	}
 }
 
+const initialInputHeight = messageInput.scrollHeight;
+
 //create div and class
 const createMessageElement = (content, ...classes) => {
 	const div = document.createElement('div');
@@ -79,6 +81,7 @@ const outgoingMessage = (event) => {
 	userData.message = messageInput.value.trim();
 	messageInput.value = '';
 	fileUploadContainer.classList.remove('file-uploaded');
+	messageInput.dispatchEvent(new Event('input'));
 
 	// create and display user message
 	const messageContent = `<div class="message-text"></div> ${userData.file.data ? `<img src='data:${userData.file.mime_type};base64,${userData.file.data}' class='attachment'/>` : ''}`;
@@ -110,10 +113,17 @@ const outgoingMessage = (event) => {
 //send message when 'enter' key is used
 messageInput.addEventListener('keydown', (event) => {
 	const userMessage = event.target.value.trim();
-	if(event.key === 'Enter' && userMessage) {
+	if(event.key === 'Enter' && userMessage && !event.shiftKey && window.innerWidth > 768) {
 		outgoingMessage(event);
 	}
 });
+
+//Adjust input feild height
+messageInput.addEventListener('input', () => {
+	messageInput.style.height = `${initialInputHeight}px`;
+	messageInput.style.height = `${messageInput.scrollHeight}px`;
+	document.querySelector('.input-form').style.borderRadius = messageInput.scrollHeight > initialInputHeight ? '15px' : '32px';
+	});
 
 //Recieve file input
 fileUpload.addEventListener('change', () => {

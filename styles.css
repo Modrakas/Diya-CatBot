@@ -262,9 +262,17 @@ body.show-catbot .catbot-container {
 	height: 47px;
 	width: 100%;
 	resize: none;
+	max-height: 180px;
+	white-space: pre-line;
 	font-size: 0.95rem;
 	padding: 14px 0 13px 18px;
 	border-radius: inherit;
+	scrollbar-width: thin;
+	scrollbar-color: transparent transparent;
+}
+
+.input-form .message-input:hover {
+	scrollbar-color: var(--light-color) transparent;
 }
 
 .input-form .btn-controls {
