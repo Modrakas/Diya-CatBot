@@ -8,6 +8,11 @@
 	<title>Diya - CatBot</title>
 </head>
 <body>
+	<button id="catbot-toggler">
+		<span><i class="fa-solid fa-cat"></i></span>
+		<span><i class="fa-solid fa-close"></i></span>
+	</button>
+
 	<div class="catbot-container">
 		<!-- CatBot Header -->
 		<div class="header">
@@ -33,7 +38,7 @@
 			<form action="#" class="input-form" id="form">
 				<textarea placeholder="Message..." class="message-input" id="msg-input" required></textarea>
 				<div class="btn-controls">
-					<button type="button"><i class="fa-regular fa-face-smile"></i></button>
+					<button type="button"><i class="fa-regular fa-face-smile" id="emoji-picker"></i></button>
 					<div class="file-upload-container">
 						<input type="file" accept="images/" id="file-upload" hidden>
 						<img src="#">
@@ -46,6 +51,7 @@
 		</div>
 	</div>
 
+	<script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
 	<script src="script.js"></script>
 </body>
 </html>

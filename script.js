@@ -4,6 +4,7 @@ const sendMessageButton = document.querySelector('#send-message');
 const fileUpload = document.querySelector('#file-upload');
 const fileUploadContainer = document.querySelector('.file-upload-container');
 const fileCancelButton = document.querySelector('#file-cancel-btn');
+const catbotToggler = document.querySelector('#catbot-toggler');
 
 //API setup
 const API_KEY = 'AIzaSyAkD3-q8Jwc9D3KiblnRaT8OAgMXFUCuAI';
@@ -144,7 +145,29 @@ fileCancelButton.addEventListener('click', () => {
 	fileUploadContainer.classList.remove('file-uploaded');
 })
 
+//Emoji picker
+const picker = new EmojiMart.Picker({ 
+	theme: 'light',
+	skinTonePosition: 'none',
+	previewPosition: 'none',
+	onEmojiSelect: (emoji) => {
+		const { selectionStart: start, selectionEnd: end } = messageInput;
+		messageInput.setRangeText(emoji.native, start, end, 'end');
+		messageInput.focus(); 
+	},
+	onClickOutside: (event) => {
+		if(event.target.id === 'emoji-picker') {
+			document.body.classList.toggle('show-emoji-picker');
+		} else {
+			document.body.classList.remove('show-emoji-picker');
+		}
+	}
+});
+
+document.querySelector('.input-form').appendChild(picker); 
+
 //BUTTONS SENDING DATA TO CATBOT
 sendMessageButton.addEventListener('click', (event) => outgoingMessage(event));
 //Trigger file upload when the upload button is clicked
 document.querySelector('#file-upload-btn').addEventListener('click', () => fileUpload.click());
+catbotToggler.addEventListener('click', () => document.body.classList.toggle('show-catbot'));

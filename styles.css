@@ -18,21 +18,53 @@
 }
 
 body {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	min-height: 100vh;
 	background: linear-gradient(var(--light-color), var(--grey-color));
 }
 
+#catbot-toggler {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	bottom: 30px;
+	right: 35px;
+	border: none;
+	height: 75px;
+	width: 75px;
+	cursor: pointer;
+	border-radius: 50%;
+	background: var(--dark-color);
+}
+
+#catbot-toggler span {
+	color: var(--light-color);
+	position: absolute;
+	font-size: 45px;
+}
+
+#catbot-toggler span:last-child {
+	opacity: 0;
+}
+
 .catbot-container {
-	position: relative;
+	position: fixed;
+	right: 70px;
+	bottom: 125px;
 	width: 375px;
 	height: 650px;
 	background: var(--white-color);
 	overflow: hidden;
 	border-radius: 10px;
-	box-shadow: 0 0 128px 0 hsla(48, 98%, 47%, 0.1), 0 32px 64px -48px hsla(0, 0%, 0%, 0.5);
+	opacity: 0 ;
+	pointer-events: none;
+	box-shadow: 0 0 120px 0 hsla(48, 98%, 47%, 0.15), 0 30px 60px -50px hsla(0, 0%, 0%, 0.5);
+	transition: all 0.2s ease;
+}
+
+body.show-catbot .catbot-container {
+	opacity: 1;
+	pointer-events: auto;
 }
 
 .header {
@@ -198,6 +230,7 @@ body {
 
 .input .input-form {
 	display: flex;
+	position: relative;
 	align-items: center;
 	border-radius: 30px;
 	outline: 1px solid var(--outline-color);
@@ -286,6 +319,20 @@ body {
 .input-form .file-upload-container.file-uploaded img,
 .input-form .file-upload-container.file-uploaded:hover #file-cancel-btn {
 	display: block;
+}
+
+em-emoji-picker {
+	position: absolute;
+	left: 50%;
+	top: -337px;
+	max-width: 350px;
+	max-height: 330px;
+	transform: translateX(-50%);
+	visibility: hidden;
+}
+
+body.show-emoji-picker em-emoji-picker {
+	visibility: visible;
 }
 
 /* Small mobile CSS */
