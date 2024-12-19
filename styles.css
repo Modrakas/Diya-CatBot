@@ -36,6 +36,25 @@ body {
 	border-radius: 50%;
 	background: var(--dark-color);
 	transition: all 0.2s ease;
+	animation: bounce 2s linear;
+}
+
+@keyframes bounce {
+	0%, 25%, 50%, 75%, 100% {
+		transform: translateY(0);
+	}
+	5% {
+		transform: translateY(-5px);
+	}
+	15%, 40% {
+		transform: translateY(-20px);
+	}
+	65%, 80% {
+		transform: translateY(-15px);
+	}
+	95% {
+		transform: translateY(-5px);
+	}
 }
 
 body.show-catbot #catbot-toggler {
@@ -65,7 +84,7 @@ body.show-catbot #catbot-toggler span:last-child {
 	right: 70px;
 	bottom: 125px;
 	width: 375px;
-	height: 650px;
+	height: 570px;
 	background: var(--white-color);
 	overflow: hidden;
 	border-radius: 10px;
@@ -359,52 +378,36 @@ body.show-emoji-picker em-emoji-picker {
 	visibility: visible;
 }
 
-/* Small mobile CSS */
-@media (max-width: 480px) { 
-	.catbot-container {
-		width: 100%;
-		max-width: 280px;
-		margin-bottom: 100px;
+/* Responsive css */
+@media (max-width: 520px) { 
+	#catbot-toggler {
+		right: 20px;
+		bottom: 20px;
 	}
 
-	.header .logo-text {
-		font-size: 1rem;
+	.catbot-container {
+		right: 0;
+		bottom: 0;
+		width: 50%;
+		height: 100%;
+		border-radius: 0;
+		width: 100%;
+	}
+
+	.catbot-container .header {
+		padding: 12px 15px;
 	}
 
 	.message-body {
-		padding: 15px 14px;
-		height: 300px;
+		height: calc(90% - 55px);
+		padding: 25px 15px;
 	}
 
-	.message-body .message .message-text {
-		font-size: 0.8rem;
-		max-width: 80%;
+	.input {
+		padding: 10px 15px 15px;
 	}
 
-	.input .input-form {
-		display: flex;
-		align-items: center;
-		padding-top: 10px;
-		height: 40px;
-		border-radius: 30px;
-		outline: 1px solid var(--outline-color);
-	}
-
-	.input-form .message-input {
-		font-size: 0.8rem;
-		padding: 10px 0 10px 14px;
-	}
-
-	.input-form .btn-controls button {
-		height: 28px;
-		width: 28px;
-		padding-top: 7px;
-		font-size: 0.9rem;
-	}
-
-	.input-form .btn-controls #send-message {
-		height: 30px;
-		width: 30px;
-		font-size: 1rem;
+	.input-form .file-upload-container.file-uploaded #file-cancel-btn{
+		opacity: 0;
 	}
 }
