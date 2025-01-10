@@ -9,12 +9,12 @@
 	/* --hover-color: #8697c4; */
 	/* --outline-color: #7091e6; */
 
-	--dark-color: #E85A4A;
-	--hover-color: #E98074;
-	--light-color: #D8C3A5;
-	--white-color: #EBE9E1;
-	--grey-color: #8E8D8A;
-	--outline-color: #E43D12;
+	--dark-color: #fec956;
+	--hover-color: #fdbc32;
+	--light-color: #fff2c7;
+	--white-color: #FFF;
+	--grey-color: #9e907a;
+	--outline-color: #fff2c7;
 }
 
 * {
@@ -26,7 +26,7 @@
 
 body {
 	min-height: 100vh;
-	background: linear-gradient(var(--white-color), var(--light-color));
+	background: radial-gradient(var(--white-color), var(--light-color));
 }
 
 #catbot-toggler {
@@ -41,7 +41,7 @@ body {
 	width: 75px;
 	cursor: pointer;
 	border-radius: 50%;
-	background: var(--dark-color);
+	background: transparent;
 	transition: all 0.2s ease;
 	animation: bounce 2s linear;
 }
@@ -69,7 +69,7 @@ body.show-catbot #catbot-toggler {
 }
 
 #catbot-toggler span {
-	color: var(--light-color);
+	color: var(--dark-color);
 	position: absolute;
 	font-size: 45px;
 }
@@ -92,7 +92,7 @@ body.show-catbot #catbot-toggler span:last-child {
 	bottom: 125px;
 	width: 375px;
 	height: 570px;
-	background: var(--white-color);
+	background: transparent;
 	overflow: hidden;
 	border-radius: 10px;
 	opacity: 0 ;
@@ -114,7 +114,7 @@ body.show-catbot .catbot-container {
 	align-items: center;
 	justify-content: space-between;
 	padding: 15px 22px;
-	background: var(--dark-color);
+	background: transparent;
 }
 
 .header .header-logo {
@@ -131,19 +131,18 @@ body.show-catbot .catbot-container {
 	width: 35px;
 	padding-right: 2px;
 	color: var(--dark-color);
-	background: var(--white-color) ;
 	border-radius: 50%;
 }
 
 .header .logo-text {
-	color: var(--white-color);
+	color: var(--grey-color);
 	font-size: 1.31rem;
 	font-weight: 500;
 }
 
 .header .close-catbot {
 	border: none;
-	color: var(--white-color);
+	color: var(--dark-color);
 	height: 40px;
 	width: 40px;
 	font-size: 1.5rem;
@@ -157,7 +156,7 @@ body.show-catbot .catbot-container {
 }
 
 .header .close-catbot:hover {
-	background-color: var(--hover-color);
+	font-size: 1.75rem;
 }
 
 .message-body {
@@ -165,11 +164,11 @@ body.show-catbot .catbot-container {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	height: 500px;
+	height: 425px;
 	margin-bottom: 82px;
 	overflow-y: auto;
 	scrollbar-width: thin;
-	scrollbar-color: var(--light-color) transparent;
+	scrollbar-color: var(--grey-color) transparent;
 }
 
 .message-body .message {
@@ -201,6 +200,7 @@ body.show-catbot .catbot-container {
 
 .message-body .message .message-text {
 	background: var(--light-color);
+	color: var(--grey-color);
 	border-radius: 10px 10px 10px 3px;
 }
 
@@ -266,7 +266,7 @@ body.show-catbot .catbot-container {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	background: var(--white-color);
+	background: transparent;
 	padding: 15px 22px 20px;
 }
 
@@ -280,7 +280,7 @@ body.show-catbot .catbot-container {
 }
 
 .input .input-form:focus-within {
-	outline: 3px solid var(--dark-color);
+	outline: 2px solid var(--dark-color);
 }
 
 .input-form .message-input {
@@ -295,6 +295,7 @@ body.show-catbot .catbot-container {
 	padding: 14px 0 13px 18px;
 	border-radius: inherit;
 	background: var(--white-color);
+	color: var(--grey-color);
 	scrollbar-width: thin;
 	scrollbar-color: transparent transparent;
 }
